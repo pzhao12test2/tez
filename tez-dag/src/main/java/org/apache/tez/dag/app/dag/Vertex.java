@@ -86,12 +86,6 @@ public interface Vertex extends Comparable<Vertex> {
    */
   TezCounters getCachedCounters();
 
-  /**
-   * Add custom counters to the vertex
-   * @param tezCounters counters to add
-   */
-  void addCounters(TezCounters tezCounters);
-
   int getMaxTaskConcurrency();
   Map<TezTaskID, Task> getTasks();
   Task getTask(TezTaskID taskID);
@@ -212,6 +206,5 @@ public interface Vertex extends Comparable<Vertex> {
   interface VertexConfig {
     int getMaxFailedTaskAttempts();
     boolean getTaskRescheduleHigherPriority();
-    boolean getTaskRescheduleRelaxedLocality();
   }
 }

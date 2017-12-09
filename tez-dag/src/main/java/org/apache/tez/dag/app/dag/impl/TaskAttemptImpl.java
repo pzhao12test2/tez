@@ -1314,7 +1314,7 @@ public class TaskAttemptImpl implements TaskAttempt,
       ta.taskRacks = racks;
 
       // Ask for hosts / racks only if not a re-scheduled task.
-      if (ta.isRescheduled && ta.getVertex().getVertexConfig().getTaskRescheduleRelaxedLocality()) {
+      if (ta.isRescheduled && ta.getVertex().getVertexConfig().getTaskRescheduleHigherPriority()) {
         locationHint = null;
       }
 
@@ -1575,12 +1575,8 @@ public class TaskAttemptImpl implements TaskAttempt,
       TaskStatusUpdateEvent statusEvent = sEvent.getStatusEvent();
       ta.reportedStatus.state = ta.getState();
       ta.reportedStatus.progress = statusEvent.getProgress();
-      if (statusEvent.getCounters() != null) {
-        ta.reportedStatus.counters = statusEvent.getCounters();
-      }
-      if (statusEvent.getStatistics() != null) {
-        ta.statistics = statusEvent.getStatistics();
-      }
+      ta.reportedStatus.counters = statusEvent.getCounters();
+      ta.statistics = statusEvent.getStatistics();
       if (statusEvent.getProgressNotified()) {
         ta.lastNotifyProgressTimestamp = ta.clock.getTime();
       } else {
