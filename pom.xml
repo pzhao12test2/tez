@@ -869,8 +869,8 @@
               <exclude>**/*.png</exclude>
               <exclude>**/*.pptx</exclude>
               <exclude>**/*TestIFile_concatenated_compressed.bin</exclude>
-            <exclude>**/.travis.yml</exclude>
-                            <exclude>**/NOW</exclude>
+            <exclude>**/NOW</exclude>
+                            <exclude>**/.travis.yml</exclude>
                         </excludes>
           </configuration>
         </plugin>
